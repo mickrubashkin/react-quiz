@@ -13,25 +13,7 @@ import Timer from './components/Timer'
 import { useQuiz } from './context/QuizContext'
 
 export default function App() {
-  const {
-    questions,
-    numQuestions,
-    status,
-    index,
-    answer,
-    points,
-    maxPossiblePoints,
-    highscore,
-    secondsRemaining,
-    dispatch,
-  } = useQuiz()
-
-  useEffect(function () {
-    fetch('http://localhost:8000/questions')
-      .then((res) => res.json())
-      .then((data) => dispatch({ type: 'dataReceived', payload: data }))
-      .catch((err) => dispatch({ type: 'dataFailed' }))
-  }, [])
+  const { status } = useQuiz()
 
   return (
     <div className="app">
